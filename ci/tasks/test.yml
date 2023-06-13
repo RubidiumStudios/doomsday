@@ -16,6 +16,9 @@ inputs:
 outputs:
 - name: work
 
+params:
+  GIT_CI: git-ci
+
 run:
   path: git-ci/ci/scripts/test
 

@@ -2,6 +2,20 @@
 # vim:et:ts=2:sts=2:sw=2
 set -ue
 
+header() {
+	echo
+	echo "================================================================================"
+	echo "$1"
+	echo "--------------------------------------------------------------------------------"
+	echo
+}
+
+bail() {
+	echo >&2 "$*  Did you misconfigure Concourse?"
+	exit 2
+}
+test -n "${APP_NAME:-}" || bail "GIT_CI must be set to the path of the git repo containing the CI assets."
+
 # Start safe
 safe local --memory &
 safe_pid=$!
@@ -15,7 +29,7 @@ SAFE_TOKEN=$(safe vault token lookup --format json | jq -r '.data.id')
 export SAFE_TOKEN
 
 # build required certs (including doomsday's)
-echo "Building certificates..."
+header "Building certificates..."
 
 echo " - secret/dd/ssl"
 safe x509 issue -t 2y -n 127.0.0.1 -n localhost -n doomsday secret/dd/ssl
@@ -28,6 +42,7 @@ safe x509 issue -t 2d -n 127.0.0.1 -n localhost -n doomsday secret/test/next
 echo " - secret/test/fortnight"
 safe x509 issue -t 14d -n 127.0.0.1 -n localhost -n doomsday secret/test/fortnight
 
+header "Starting doomsday server"
 # Build doomsday server config
 safe targets --json | \
   jq '.[0] | {"meta": .}' | \
@@ -47,6 +62,8 @@ $DDCMD login -u admin -p password
 # refresh
 $DDCMD refresh
 
+header "Testing the certificates"
+
 # list
 $DDCMD list | $GIT_CI/ci/scripts/test_list
 test_list=$?
@@ -59,4 +76,12 @@ test_dashboard=$?
 kill $dd_pid
 kill -9 $(pgrep -P $safe_pid) $safe_pid # need to kill vault and safe explicitly
 
-exit $((test_list || test_dashboard))
+echo
+echo "================================================================================"
+if [ $((test_list || test_dashboard)) -eq 0 ] ; then
+  echo "SUCCESS!"
+  exit 0
+else
+  echo "FAILURE!"
+  exit 1
+fi
