@@ -31,7 +31,7 @@ safe x509 issue -t 14d -n 127.0.0.1 -n localhost -n doomsday secret/test/fortnig
 # Build doomsday server config
 safe targets --json | \
   jq '.[0] | {"meta": .}' | \
-  spruce merge /doomsday/ddayconfig.yml - \
+  spruce merge $GIT_CI/ci/ddayconfig.yml - \
   > /root/.ddconfig
 
 # Start doomsday server and capture pid
