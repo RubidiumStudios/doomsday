@@ -46,7 +46,7 @@ header "Starting doomsday server"
 # Build doomsday server config
 safe targets --json | \
   jq '.[0] | {"meta": .}' | \
-  spruce merge $GIT_CI/ci/ddayconfig.yml - \
+  spruce merge $GIT_CI/ci/ddconfig.yml - \
   > /root/.ddconfig
 
 # Start doomsday server and capture pid
