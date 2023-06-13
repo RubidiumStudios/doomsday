@@ -59,5 +59,4 @@ test_dashboard=$?
 kill $dd_pid
 kill -9 $(pgrep -P $safe_pid) $safe_pid # need to kill vault and safe explicitly
 
-exit 
-
+exit $((test_list || test_dashboard))
