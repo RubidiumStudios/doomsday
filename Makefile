@@ -1,5 +1,5 @@
 BUILD_TARGET ?= cmd/*.go
-APP_NAME := doomsday
+APP_NAME ?= doomsday
 OUTPUT_NAME ?= $(APP_NAME)
 SHELL := $(shell which bash)
 COMMIT_HASH := $(shell git log --pretty='format:%h' -n 1)
@@ -28,10 +28,13 @@ darwin-amd64:
 darwin-arm64:
 	GOOS=darwin GOARCH=arm64 OUTPUT_NAME=$(APP_NAME)-darwin-arm64 $(MAKE) server
 
-linux: linux-amd64
+linux: linux-amd64 linux-arm64
 
 linux-amd64:
 	GOOS=linux GOARCH=amd64 OUTPUT_NAME=$(APP_NAME)-linux-amd64 $(MAKE) server
+
+linux-arm64:
+	GOOS=linux GOARCH=arm64 OUTPUT_NAME=$(APP_NAME)-linux-arm64 $(MAKE) server
 
 all: embed darwin linux
 
@@ -43,4 +46,4 @@ tsc:
 	tsc --project web/tsconfig.json
 
 clean:
-	rm -f $(APP_NAME) $(APP_NAME)-darwin-amd64 $(APP_NAME)-darwin-arm64 $(APP_NAME)-linux-amd64
+	rm -f $(APP_NAME) $(APP_NAME)-darwin-* $(APP_NAME)-linux-*
