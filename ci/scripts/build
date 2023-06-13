@@ -25,14 +25,20 @@ test -f "${VERSION_FROM}"     || bail "Version file (${VERSION_FROM}) not found.
 VERSION=$(cat "${VERSION_FROM}")
 test -n "${VERSION}"          || bail "Version file (${VERSION_FROM}) was empty."
 
-header "Building $APP_NAME v$VERSION..."
+header "Installing dependencies..."
+curl -fsSL https://deb.nodesource.com/setup_16.x | bash -
+apt-get install nodejs
 
 cd "$REPO_ROOT"
 go version;
+
 echo "node version: $(node --version)"
 echo "npm version: $(npm --version)"
 echo
 npm install -g typescript
+
+header "Building $APP_NAME v$VERSION..."
+
 make clean all VERSION=$VERSION APP_NAME=$APP_NAME
 cd release
 tar -zcvf ../../$BUILD_ROOT/$APP_NAME.tar.gz $APP_NAME-*
