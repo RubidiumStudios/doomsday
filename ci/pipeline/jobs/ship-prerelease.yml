@@ -14,7 +14,7 @@ jobs:
       file: git-ci/ci/tasks/prerelease.yml
       params:
         PRERELEASE:       1
-        PROJECT:          (( grab meta.name ))
+        APP_NAME:         (( grab meta.name ))
         DEVELOP_BRANCH:   (( grab meta.github.branch ))
         RELEASE_BRANCH:   (( grab meta.github.branch ))
         RELEASE_ROOT:     gh

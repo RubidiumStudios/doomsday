@@ -19,7 +19,7 @@ meta:
     secret_key: ((aws.secret_access_key))
 
   github:
-    owner:           rubidiumstudios
+    owner:           RubidiumStudios
     repo:            doomsday
     branch:          develop
     main-branch:     main

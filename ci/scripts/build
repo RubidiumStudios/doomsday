@@ -25,13 +25,13 @@ test -f "${VERSION_FROM}"     || bail "Version file (${VERSION_FROM}) not found.
 VERSION=$(cat "${VERSION_FROM}")
 test -n "${VERSION}"          || bail "Version file (${VERSION_FROM}) was empty."
 
-header "Building $PROJECT v$VERSION..."
+header "Building $APP_NAME v$VERSION..."
 
 cd "$REPO_ROOT"
 go version; echo; echo
 make clean all VERSION=$VERSION APP_NAME=$APP_NAME
 cd release
-tar -zcvf ../../$BUILD_ROOT/$PROJECT-$VERSION.tar.gz $PROJECT-$VERSION-*
+tar -zcvf ../../$BUILD_ROOT/$APP_NAME.tar.gz $APP_NAME-*
 
 echo
 echo "================================================================================"

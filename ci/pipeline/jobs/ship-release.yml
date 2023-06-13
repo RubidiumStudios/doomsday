@@ -14,11 +14,11 @@ jobs:
     - task: build-kit
       file: git-ci/ci/tasks/build.yml
       params:
-        PROJECT:          (( grab meta.name ))
+        APP_NAME:         (( grab meta.name ))
     - task: release
       file: git-ci/ci/tasks/release.yml
       params:
-        PROJECT:          (( grab meta.name ))
+        APP_NAME:         (( grab meta.name ))
         DEVELOP_BRANCH:   (( grab meta.github.branch ))
         RELEASE_BRANCH:   (( grab meta.github.main-branch ))
         RELEASE_ROOT:     gh

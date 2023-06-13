@@ -17,7 +17,7 @@ jobs:
         RELEASE_NOTES_FILE:     (( grab meta.github.release_notes.file ))
         GIT_NAME:               (( grab meta.git.name ))
         GIT_EMAIL:              (( grab meta.git.email ))
-        PROJECT:                (( grab meta.name ))
+        APP_NAME:               (( grab meta.name ))
         NO_UPSTREAM_SYNC:       true
         NO_RELEASE_VERSIONS:    true
     - put: release-notes

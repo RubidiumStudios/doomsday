@@ -53,7 +53,7 @@ else
     bail "Release notes file (${RELEASE_NOTES_PATH}) not found."
 fi
 
-test -n "${PROJECT:-}"      || bail "PROJECT must be set to the name of this project."
+test -n "${APP_NAME:-}"     || bail "APP_NAME must be set to the name of this project."
 test -n "${GITHUB_OWNER:-}" || bail "GITHUB_OWNER must be set to the name of the Github user or organization that owns the Git repository."
 echo "Environment OK"
 
@@ -68,7 +68,7 @@ if [[ -n "$PRERELEASE" ]] ; then
   echo "$(cat git/.git/ref)" "-> ${RELEASE_ROOT}/commit (pre-release)"
   cp    git/.git/ref            "${RELEASE_ROOT}/commit"
 fi
-tar -zxvf "${BUILD_ROOT}/${PROJECT}-${VERSION}".tar.gz -C "${RELEASE_ROOT}/artifacts"
+tar -zxvf "${BUILD_ROOT}/${APP_NAME}-${VERSION}".tar.gz -C "${RELEASE_ROOT}/artifacts"
 
 header "Release Notes for v${VERSION}"
 header="$(sed -i -e '1{w /dev/stdout' -e 'd}' "${RELEASE_NOTES_PATH}")"
@@ -101,7 +101,7 @@ if [[ -z "${PRERELEASE}" && "$DEVELOP_BRANCH" != "$RELEASE_BRANCH" ]] ; then
 fi
 
 cat > "${NOTIFICATION_OUT:-notifications}/message" <<EOS
-New ${PROJECT} v${VERSION} released. <https://github.com/${GITHUB_OWNER}/${PROJECT}/releases/tag/v${VERSION}|Release notes>.
+New ${APP_NAME} v${VERSION} released. <https://github.com/${GITHUB_OWNER}/${APP_NAME}/releases/tag/v${VERSION}|Release notes>.
 EOS
 
 echo
