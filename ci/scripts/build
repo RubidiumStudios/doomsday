@@ -40,7 +40,7 @@ npm install -g typescript
 header "Building $APP_NAME v$VERSION..."
 
 make clean all VERSION=$VERSION APP_NAME=$APP_NAME
-cd release
+cd releases
 tar -zcvf ../../$BUILD_ROOT/$APP_NAME.tar.gz $APP_NAME-*
 
 echo

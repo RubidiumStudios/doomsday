@@ -23,18 +23,18 @@ server:
 darwin: darwin-amd64 darwin-arm64
 
 darwin-amd64:
-	GOOS=darwin GOARCH=amd64 OUTPUT_NAME=$(APP_NAME)-darwin-amd64 $(MAKE) server
+	GOOS=darwin GOARCH=amd64 OUTPUT_NAME=releases/$(APP_NAME)-darwin-amd64 $(MAKE) server
 
 darwin-arm64:
-	GOOS=darwin GOARCH=arm64 OUTPUT_NAME=$(APP_NAME)-darwin-arm64 $(MAKE) server
+	GOOS=darwin GOARCH=arm64 OUTPUT_NAME=releases/$(APP_NAME)-darwin-arm64 $(MAKE) server
 
 linux: linux-amd64 linux-arm64
 
 linux-amd64:
-	GOOS=linux GOARCH=amd64 OUTPUT_NAME=$(APP_NAME)-linux-amd64 $(MAKE) server
+	GOOS=linux GOARCH=amd64 OUTPUT_NAME=releases/$(APP_NAME)-linux-amd64 $(MAKE) server
 
 linux-arm64:
-	GOOS=linux GOARCH=arm64 OUTPUT_NAME=$(APP_NAME)-linux-arm64 $(MAKE) server
+	GOOS=linux GOARCH=arm64 OUTPUT_NAME=releases/$(APP_NAME)-linux-arm64 $(MAKE) server
 
 all: embed darwin linux
 
@@ -46,4 +46,4 @@ tsc:
 	tsc --project web/tsconfig.json
 
 clean:
-	rm -f $(APP_NAME) $(APP_NAME)-darwin-* $(APP_NAME)-linux-*
+	rm -f $(APP_NAME) releases
