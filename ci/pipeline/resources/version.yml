@@ -9,6 +9,6 @@ resources:
     secret_access_key:     (( grab meta.aws.secret_key ))
     bucket:                (( grab meta.aws.bucket ))
     region_name:           (( grab meta.aws.region_name ))
-    key:                   "version"
+    key:                   (( concat meta.name "/version" ))
     initial_version:       (( grab meta.initial_version || "0.0.1" ))
 
