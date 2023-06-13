@@ -28,7 +28,11 @@ test -n "${VERSION}"          || bail "Version file (${VERSION_FROM}) was empty.
 header "Building $APP_NAME v$VERSION..."
 
 cd "$REPO_ROOT"
-go version; echo; echo
+go version;
+echo "node version: $(node --version)"
+echo "npm version: $(npm --version)"
+echo
+npm install -g typescript
 make clean all VERSION=$VERSION APP_NAME=$APP_NAME
 cd release
 tar -zcvf ../../$BUILD_ROOT/$APP_NAME.tar.gz $APP_NAME-*
