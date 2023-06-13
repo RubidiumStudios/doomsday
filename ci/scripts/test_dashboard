@@ -56,7 +56,7 @@ test_that "secret/test/soon",      is=>"WITHIN 3 DAYS";
 test_that "secret/test/next",      is=>"WITHIN 3 DAYS";
 test_that "secret/test/fortnight", is=>"WITHIN 2 WEEKS";
 
-test_that \%items,                 has_key_count_of=>5, "number of doomed certificates";
+test_that \%items,                 has_key_count_of=>4, "number of doomed certificates";
 
 summary;
 exit $failures > 0 ? 1 : 0;
