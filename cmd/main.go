@@ -11,7 +11,7 @@ import (
 	"github.com/doomsday-project/doomsday/client/doomsday"
 	"github.com/doomsday-project/doomsday/version"
 	"github.com/starkandwayne/goutils/ansi"
-	kingpin "gopkg.in/alecthomas/kingpin.v2"
+	kingpin "github.com/alecthomas/kingpin/v2"
 )
 
 func registerCommands(app *kingpin.Application) {
