@@ -10,7 +10,7 @@ require (
 	github.com/cloudfoundry-community/goutils v0.0.0-20230124234059-1add95a6ecd7
 	github.com/cloudfoundry-community/vaultkv v0.7.0
 	github.com/gorilla/mux v1.8.1
-	github.com/olekukonko/tablewriter v0.0.5
+	github.com/olekukonko/tablewriter v0.0.6-0.20230925090304-df64c4bbad77
 	github.com/pborman/uuid v1.2.1
 	github.com/robfig/cron v1.2.0
 	github.com/thomasmitchell/go-shout v0.0.0-20200117221442-ad6c1a8d1669
