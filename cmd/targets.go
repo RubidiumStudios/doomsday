@@ -5,7 +5,7 @@ import (
 	"os"
 
 	"github.com/olekukonko/tablewriter"
-	"github.com/starkandwayne/goutils/ansi"
+	"github.com/cloudfoundry-community/goutils/ansi"
 )
 
 type targetsCmd struct {

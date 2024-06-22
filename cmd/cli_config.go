@@ -7,7 +7,7 @@ import (
 	"os"
 
 	"github.com/olekukonko/tablewriter"
-	"github.com/starkandwayne/goutils/ansi"
+	"github.com/cloudfoundry-community/goutils/ansi"
 
 	yaml "gopkg.in/yaml.v3"
 )

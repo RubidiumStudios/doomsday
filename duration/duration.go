@@ -6,7 +6,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/starkandwayne/goutils/ansi"
+	"github.com/cloudfoundry-community/goutils/ansi"
 )
 
 //Format takes a duration and outputs a string representing that duration

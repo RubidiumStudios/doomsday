@@ -9,7 +9,7 @@ import (
 	"github.com/doomsday-project/doomsday/client/doomsday"
 	"github.com/doomsday-project/doomsday/duration"
 	"github.com/olekukonko/tablewriter"
-	"github.com/starkandwayne/goutils/ansi"
+	"github.com/cloudfoundry-community/goutils/ansi"
 )
 
 type listCmd struct {
