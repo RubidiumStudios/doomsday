@@ -11,7 +11,7 @@ import (
 	"sync"
 
 	"github.com/doomsday-project/doomsday/storage"
-	yaml "gopkg.in/yaml.v2"
+	yaml "gopkg.in/yaml.v3"
 )
 
 type Core struct {
