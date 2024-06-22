@@ -46,4 +46,4 @@ tsc:
 	tsc --project web/tsconfig.json
 
 clean:
-	rm -f $(APP_NAME) releases
+	rm -rf $(APP_NAME) releases
