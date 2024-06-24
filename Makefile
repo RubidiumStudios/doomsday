@@ -9,7 +9,7 @@ ifneq ("$(DIRTY_LINE)", "")
 endif
 VERSION ?= development
 LDFLAGS := -X "main.Version=$(VERSION)-$(COMMIT_HASH)$(DIRTY)"
-BUILD := go build -v -ldflags='$(LDFLAGS)' -o $(OUTPUT_NAME) $(BUILD_TARGET)
+BUILD := go build -ldflags='$(LDFLAGS)' -o $(OUTPUT_NAME) $(BUILD_TARGET)
 
 .PHONY: build server darwin darwin-amd64 darwin-arm64 linux linux-amd64 embed tsc all clean
 .DEFAULT: build
@@ -43,7 +43,7 @@ embed: tsc
 
 tsc:
 	cd web && npm install
-	tsc --project web/tsconfig.json
+	npx tsc --project web/tsconfig.json
 
 clean:
 	rm -rf $(APP_NAME) releases
