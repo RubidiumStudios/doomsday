@@ -5,7 +5,7 @@ import (
 	"strings"
 
 	"github.com/doomsday-project/doomsday/server/logger"
-	yaml "gopkg.in/yaml.v2"
+	yaml "gopkg.in/yaml.v3"
 )
 
 type Backend interface {

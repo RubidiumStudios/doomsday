@@ -8,7 +8,7 @@ import (
 
 	"github.com/doomsday-project/doomsday/server/auth"
 	"github.com/doomsday-project/doomsday/server/notify"
-	yaml "gopkg.in/yaml.v2"
+	yaml "gopkg.in/yaml.v3"
 )
 
 type Config struct {
