@@ -5,6 +5,6 @@
 > 
 > Current status. Kingpin is largely feature stable. There hasn't been a need to add new features in a while, but there are some bugs that should be fixed.
 > 
-> Why? I no longer use Kingpin personally (I now use kong). Rather than leave the project in a limbo of people filing issues and wondering why they're not being worked on, I believe this notice will more clearly set expectations.
+> **Why? I no longer use Kingpin personally (I now use kong). Rather than leave the project in a limbo of people filing issues and wondering why they're not being worked on, I believe this notice will more clearly set expectations.**
 
 2. Do we find a supported ansi interface?
