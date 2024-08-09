@@ -26,7 +26,7 @@ VERSION=$(cat "${VERSION_FROM}")
 test -n "${VERSION}"          || bail "Version file (${VERSION_FROM}) was empty."
 
 header "Installing dependencies..."
-curl -fsSL https://deb.nodesource.com/setup_16.x | bash -
+curl -fsSL https://deb.nodesource.com/setup_20.x | bash -
 apt-get install nodejs
 
 cd "$REPO_ROOT"
