@@ -27,6 +27,7 @@ test -n "${VERSION}"          || bail "Version file (${VERSION_FROM}) was empty.
 
 header "Installing dependencies..."
 curl -fsSL https://bun.sh/install | bash
+export PATH="$PATH:$HOME/.bun/bin"
 
 cd "$REPO_ROOT"
 go version;
@@ -37,9 +38,9 @@ bun install -g typescript
 
 header "Building $APP_NAME v$VERSION..."
 
-make clean all VERSION=$VERSION APP_NAME=$APP_NAME
+make clean all VERSION="$VERSION" APP_NAME="$APP_NAME"
 cd releases
-tar -zcvf ../../$BUILD_ROOT/$APP_NAME.tar.gz $APP_NAME-*
+tar -zcvf "../../$BUILD_ROOT/$APP_NAME.tar.gz" "$APP_NAME"-*
 
 echo
 echo "================================================================================"
