@@ -42,7 +42,7 @@ embed: tsc
 	GOOS="" GOARCH="" go run web/embed/main.go web/embed/mappings.yml
 
 tsc:
-	cd web && npm install && npx tsc --project tsconfig.json
+	cd web && bun install && bun tsc --project tsconfig.json
 
 clean:
 	rm -rf $(APP_NAME) releases

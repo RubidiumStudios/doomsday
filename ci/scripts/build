@@ -26,16 +26,14 @@ VERSION=$(cat "${VERSION_FROM}")
 test -n "${VERSION}"          || bail "Version file (${VERSION_FROM}) was empty."
 
 header "Installing dependencies..."
-curl -fsSL https://deb.nodesource.com/setup_20.x | bash -
-apt-get install nodejs
+curl -fsSL https://bun.sh/install | bash
 
 cd "$REPO_ROOT"
 go version;
 
-echo "node version: $(node --version)"
-echo "npm version: $(npm --version)"
+echo "bun version: $(bun --version)"
 echo
-npm install -g typescript
+bun install -g typescript
 
 header "Building $APP_NAME v$VERSION..."
 
