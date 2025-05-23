@@ -1,4 +1,4 @@
-FROM golang:1.14 as build
+FROM golang:1.24.3 as build
 
 ADD . /go/src/doomsdayproject/doomsday/
 RUN cd /go/src/doomsdayproject/doomsday/ \
